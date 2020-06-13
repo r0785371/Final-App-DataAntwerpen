@@ -1,0 +1,51 @@
+<form>
+  <h2>
+    Carpoolparkings :
+  </h2>
+  <div class="row">
+    <div class="col-md-4">
+      <google-map
+        height="500px"
+        width="100%"
+        [zoom]="zoom"
+        [center]="center"
+        [options]="options"
+        (mapClick)="click($event)"
+      >
+        <map-marker
+          #markerElem
+          *ngFor="let marker of markers"
+          [position]="marker.position"
+          [label]="marker.label"
+          [title]="marker.title"
+          [options]="marker.options"
+          (mapClick)="openInfo(markerElem, marker.info)"
+        >
+        </map-marker>
+        <map-info-window>{{ infoContent }}</map-info-window>
+      </google-map>
+
+      <!-- <button (click)="zoomIn()">Zoom in</button>
+      <button (click)="zoomOut()">Zoom out</button>
+      <button (click)="addMarker()">Add marker</button> -->
+      <ul *ngFor="let park of parkings">
+        <div class="card-header">
+          <h3>{{ park.attributes.Naam }}</h3>
+          <li>{{ park | json }}</li>
+          <hr />
+          <div class="card-body text-left">
+            <li>
+              Maplocatie Longitude : {{ park.attributes.Longitude }} Latitude :
+              {{ park.attributes.Latitude }}
+              <br />
+              Adres :{{ park.attributes.Postcode }}
+              {{ park.attributes.Gemeente }}
+            </li>
+          </div>
+          <hr />
+        </div>
+        <div class="card-footer"></div>
+      </ul>
+    </div>
+  </div>
+</form>

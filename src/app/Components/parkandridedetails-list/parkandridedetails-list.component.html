@@ -1,0 +1,19 @@
+<form>
+  <h2>
+    Tram-& buslijnen:
+  </h2>
+  <div class="row">
+    <div class="col-md-4">
+      <ul *ngFor="let park of parkings">
+        <div class="card-header">
+          <h3>{{ park.attributes.Naam }}</h3>
+          <!-- <li>{{ park | json }}</li> -->
+          <hr />
+          <li>Buslijnen : {{ park.attributes.Buslijnen }}</li>
+          <hr />
+          <li>Tramlijnen :{{ park.attributes.Tramlijnen }}</li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</form>
